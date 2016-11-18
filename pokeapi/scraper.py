@@ -9,8 +9,13 @@ def get_pokemon_data(pokenumber):
     pokedata = r.get(request_url)
     return pokedata.json()
 
+def get_gender_data(pokenumber):
+    request_url = base_url + 'gender/%s' % pokenumber
+    pokedata = r.get(request_url)
+    return pokedata.json()
+
 ## this creates a file 'bulbasaur.txt' and puts the
 ## results of get_pokemon_data(1) in that file
 
-with open('bulbasaur.txt', 'w') as outfile:
-    json.dump(get_pokemon_data(1), outfile)
+with open('bulbasaur_gender.txt', 'w') as outfile:
+    json.dump(get_gender_data(1), outfile)
