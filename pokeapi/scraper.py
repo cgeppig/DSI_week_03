@@ -2,6 +2,9 @@
 
 import requests as r
 import json
+import parser.return_pokemon_information
+import time
+import parser
 
 base_url = 'http://pokeapi.co/api/v2/'
 def get_pokemon_data(pokenumber):
@@ -14,8 +17,9 @@ def get_gender_data(pokenumber):
     pokedata = r.get(request_url)
     return pokedata.json()
 
-## this creates a file 'bulbasaur.txt' and puts the
-## results of get_pokemon_data(1) in that file
+gender_data = get_gender_data(1)
 
-with open('bulbasaur_gender.txt', 'w') as outfile:
-    json.dump(get_gender_data(1), outfile)
+for x in range(1,5):
+    pokemon_data = get_pokemon_data(x)
+    time.sleep(1)
+    print parser.return_pokemon_information(pokemon_data, gender_data)

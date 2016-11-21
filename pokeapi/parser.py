@@ -1,5 +1,6 @@
 import json
 
+
 with open('bulbasaur.txt', 'r') as infile:
     json_data = json.load(infile)
 
@@ -42,13 +43,13 @@ def return_pokemon_information(pokemon_data, gender_data):
     base_stats = stats_list(extract_base(pokemon_data, 'stats'))
     type_data = types_list(extract_base(pokemon_data, 'types'))
     gender_dictionary = all_pokemon_gender(extract_base(gender_data, 'pokemon_species_details'))
-    gender_likelihood = gender_data[str(id_num)]['rate']
+    gender_likelihood = gender_dictionary[str(id_num)]['rate']
     return {
         'base_exp': base_experience,
         'height': height,
         'weight': weight,
         'name': name,
-        'id_num': id_num'
+        'id_num': id_num,
         'chance_female': gender_likelihood,
         'base_stats_list': base_stats,
         'type_list': type_data
